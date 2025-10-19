@@ -6,13 +6,13 @@ A robust, modern **Java application** for managing the lifecycle of digital pass
 
 ## ✈️ The Inspiration: A Traveler’s Nightmare
 
-We’ve all heard the stories — a dream trip ruined by a single typo or an expired passport. Travel should be about adventure, not paperwork anxiety.  
+I have had a trip ruined by digital passport issues. Travel should be about exploring, not anxiety and verification issues. 
 
 This project was inspired by that frustration. It answers a simple question:
 
 > *What if we could build a digital system so reliable and intelligent that passport issues are caught before they ever cause real-world problems?*
 
-The **Passport Management System** is designed to ensure that every passport record is valid, secure, and correctly managed — from issuance to expiration.
+The **Passport Management System** is designed to ensure that every passport record is valid, secure, and correctly managed.
 
 ---
 
@@ -20,27 +20,23 @@ The **Passport Management System** is designed to ensure that every passport rec
 
 This project goes beyond simple data storage. It models a professional-grade backend system that demonstrates **modern software engineering principles**.
 
-- 🧱 **Immutable Data Models**  
+- **Immutable Data Models**  
   Once created, Passport objects cannot be modified, ensuring absolute data consistency and preventing corruption.
 
-- 🧩 **Builder Design Pattern**  
+- **Builder Design Pattern**  
   Passports are instantiated via a `Builder` pattern, validating all inputs (e.g., no future birthdates) before creation.
 
-- 🧠 **Service-Oriented Architecture**  
+- **Service-Oriented Architecture**  
   The `PassportOffice` class serves as the business logic layer, handling operations like issuing or revoking passports.
 
-- 🗃️ **Singleton Database**  
+- **Singleton Database**  
   The `PassportDB` class simulates a shared in-memory database, guaranteeing a single, consistent data source across the application.
 
-- 🚨 **Custom Exception Handling**  
+- **Custom Exception Handling**  
   The `InvalidPassportDataException` class provides clear, precise error messages for invalid data.
 
-- ✅ **Comprehensive Unit Testing**  
+- **Comprehensive Unit Testing**  
   Backed by **JUnit 5**, the system includes tests that verify integrity, exception handling, and business logic.
 
-- 🔑 **UUID-Based ID Generation**  
+- **UUID-Based ID Generation**  
   Every passport is assigned a unique UUID, mirroring modern secure identification practices.
-
----
-
-## 🧭 Project Structure

@@ -1,48 +1,80 @@
-package programs;
+package com.passport.system;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
- * Example of using the Passport class.
- * 
- * @author cmsc131
- *
+ * Driver class to demonstrate the functionality of the Passport Management System.
  */
 public class Driver {
 
-	public static void main(String[] args) {
-		Passport.resetNumberOfPassportObjects();
+    private static final Logger LOGGER = Logger.getLogger("com.passport.system");
 
-		Passport passport1 = new Passport("claudia", "I.", "smith");
-		System.out.println(passport1);
+    public static void main(String[] args) {
+        // Setup basic logging to the console
+        setupLogger();
 
-		Passport passport2 = new Passport("John", "RoberTs");
-		System.out.println(passport2);
+        LOGGER.info("--- Passport Management System Simulation ---");
+        PassportOffice office = new PassportOffice();
 
-		Passport passport3 = new Passport();
-		System.out.println(passport3);
-		System.out.println("=============");
+        // --- Issue a valid passport ---
+        System.out.println("\n1. Issuing a valid passport...");
+        Optional<Passport> p1Optional = office.issuePassport(
+                "John", "Doe", LocalDate.of(1990, Month.JANUARY, 15), "American"
+        );
+        UUID johnsId = null;
+        if (p1Optional.isPresent()) {
+            Passport johnsPassport = p1Optional.get();
+            johnsId = johnsPassport.getPassportId();
+            System.out.println("   Success: " + johnsPassport);
+        } else {
+            System.out.println("   Failure to issue passport for John Doe.");
+        }
 
-		passport1.addStamp("Spain");
-		passport1.addStamp("London");
-		System.out.println("Stamps for " + passport1 + "-->" + passport1.getStamps());
+        // --- Attempt to issue a passport with invalid data ---
+        System.out.println("\n2. Attempting to issue a passport with a future date of birth...");
+        office.issuePassport("Jane", "Smith", LocalDate.now().plusDays(1), "Canadian");
 
-		passport1.setSeparator('#');
-		System.out.println(passport1);
-		Passport passport4 = new Passport("CLAUDIA", "I.", "smith");
-		System.out.println(passport1 + " same to " + passport4 + "? " + passport1.equals(passport4));
 
-		System.out.println("=============");
-		System.out.println("Comparing");
-		System.out.println("Comp1: " + (passport1.compareTo(passport2) > 0));
-		System.out.println("Comp2: " + (passport2.compareTo(passport1) < 0));
-		System.out.println("Comp3: " + (passport1.compareTo(passport4) == 0));
+        // --- Retrieve and update a passport ---
+        if (johnsId != null) {
+            System.out.println("\n3. Retrieving and adding stamps to John's passport...");
+            office.addTravelStamp(johnsId, "Spain");
+            office.addTravelStamp(johnsId, "France");
+            office.addTravelStamp(johnsId, "Japan");
 
-		System.out.println("=============");
-		System.out.println("Normalizing");
-		Passport normalized1 = Passport.normalize(passport1, true);
-		System.out.println("Normalize #1: " + normalized1);
-		System.out.println("Normalize #2: " + Passport.normalize(passport1, false));
-		System.out.println("Normalize #3: " + Passport.normalize(passport4, false));
+            Optional<Passport> retrievedPassport = office.retrievePassport(johnsId);
+            retrievedPassport.ifPresent(p -> {
+                System.out.println("   Retrieved: " + p);
+                System.out.println("   Stamps: " + p.getPassportStamps());
+                System.out.println("   Is Expired? " + p.isExpired());
+            });
+        }
 
-		System.out.println("Number of objects: " + Passport.getNumberOfPassportObjects());
-	}
+        // --- Revoke a passport ---
+        if (johnsId != null) {
+            System.out.println("\n4. Revoking John's passport...");
+            boolean revoked = office.revokePassport(johnsId);
+            System.out.println("   Revocation status: " + (revoked ? "Successful" : "Failed"));
+            System.out.println("   Attempting to retrieve again: " + office.retrievePassport(johnsId).isPresent());
+        }
+
+        LOGGER.info("\n--- Simulation Complete ---");
+    }
+
+    private static void setupLogger() {
+        Logger rootLogger = Logger.getLogger("com.passport.system");
+        rootLogger.setLevel(Level.ALL);
+        ConsoleHandler handler = new ConsoleHandler();
+        handler.setFormatter(new SimpleFormatter());
+        handler.setLevel(Level.INFO); // Set console to see INFO and above
+        rootLogger.addHandler(handler);
+        rootLogger.setUseParentHandlers(false);
+    }
 }

@@ -10,7 +10,7 @@ I have had a trip ruined by digital passport issues. Travel should be about expl
 
 This project was inspired by that frustration. It answers a simple question:
 
-> *What if we could build a digital system so reliable and intelligent that passport issues are caught before they ever cause real-world problems?*
+What if we could build a digital system so reliable and intelligent that passport issues are caught before they ever cause real-world problems?
 
 The **Passport Management System** is designed to ensure that every passport record is valid, secure, and correctly managed.
 
@@ -18,7 +18,7 @@ The **Passport Management System** is designed to ensure that every passport rec
 
 ## Core Features
 
-This project goes beyond simple data storage. It models a professional-grade backend system that demonstrates **modern software engineering principles**.
+This project goes beyond simple data storage. It models a professional-grade backend system that demonstrates modern software engineering principles. 
 
 - **Immutable Data Models**  
   Once created, Passport objects cannot be modified, ensuring absolute data consistency and preventing corruption.

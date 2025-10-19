@@ -1,43 +1,46 @@
-Java Passport Implementation System
+# 🛂 Passport Implementation System
 
-A robust, modern Java application for managing the lifecycle of digital passports, built with a focus on data integrity, architectural design patterns, and comprehensive testing.
+A robust, modern **Java application** for managing the lifecycle of digital passports — built with a focus on **data integrity**, **clean architecture**, and **comprehensive testing**.
 
-The Inspiration: A Traveler's Nightmare
+---
 
-We've all been there—or at least, we've all heard the horror stories. A friend excitedly plans a trip for months, only to be stopped at the check-in counter because of a simple typo in their passport details. Or worse, a family realizes a child's passport has expired just days before a long-awaited vacation. Travel should be about adventure and creating memories, not wrestling with bureaucracy and data errors.
+## ✈️ The Inspiration: A Traveler’s Nightmare
 
-This project was born from that frustration. It's an answer to the question: "What if we could build a digital system so reliable and intelligent that these common passport problems could be prevented before they even start?" The goal was to engineer a backend system that treats passport data with the seriousness it deserves, ensuring every record is valid, secure, and correctly managed from issuance to expiration.
+We’ve all heard the stories — a dream trip ruined by a single typo or an expired passport. Travel should be about adventure, not paperwork anxiety.  
 
-Core Features
+This project was inspired by that frustration. It answers a simple question:
 
-This isn't just a simple data storage program. It's a simulation of a professional-grade, service-oriented system that demonstrates modern software engineering principles.
+> *What if we could build a digital system so reliable and intelligent that passport issues are caught before they ever cause real-world problems?*
 
-Immutable Data Models: The Passport objects are immutable. Once created, their core details cannot be changed, preventing accidental data corruption and ensuring record integrity.
+The **Passport Management System** is designed to ensure that every passport record is valid, secure, and correctly managed — from issuance to expiration.
 
-Builder Design Pattern: Passports are created using a robust Builder pattern, which validates all data before an object is instantiated. This makes it impossible to create a Passport with invalid information, like a date of birth in the future.
+---
 
-Service-Oriented Architecture: The PassportOffice class acts as a central service layer, separating the business logic (how to issue or revoke a passport) from the underlying data storage.
+## ⚙️ Core Features
 
-Singleton Database: A singleton PassportDB class simulates an in-memory database, guaranteeing that the entire application uses a single, consistent data source.
+This project goes beyond simple data storage. It models a professional-grade backend system that demonstrates **modern software engineering principles**.
 
-Custom Exception Handling: The system uses a custom InvalidPassportDataException to provide clear, specific feedback when data validation fails.
+- 🧱 **Immutable Data Models**  
+  Once created, Passport objects cannot be modified, ensuring absolute data consistency and preventing corruption.
 
-Comprehensive Unit Testing: The entire system is backed by a suite of JUnit 5 tests (PassportTest), ensuring that every component works as expected and is resilient to errors.
+- 🧩 **Builder Design Pattern**  
+  Passports are instantiated via a `Builder` pattern, validating all inputs (e.g., no future birthdates) before creation.
 
-Unique ID Generation: Each passport is assigned a UUID, the standard for generating unique identifiers in modern applications.
+- 🧠 **Service-Oriented Architecture**  
+  The `PassportOffice` class serves as the business logic layer, handling operations like issuing or revoking passports.
 
-Project Structure
+- 🗃️ **Singleton Database**  
+  The `PassportDB` class simulates a shared in-memory database, guaranteeing a single, consistent data source across the application.
 
-The system is organized into distinct layers, each with a clear responsibility:
+- 🚨 **Custom Exception Handling**  
+  The `InvalidPassportDataException` class provides clear, precise error messages for invalid data.
 
-Passport.java: The core, immutable data model representing a passport.
+- ✅ **Comprehensive Unit Testing**  
+  Backed by **JUnit 5**, the system includes tests that verify integrity, exception handling, and business logic.
 
-PassportOffice.java: The service layer that contains all business logic (issuing, revoking, updating).
+- 🔑 **UUID-Based ID Generation**  
+  Every passport is assigned a unique UUID, mirroring modern secure identification practices.
 
-PassportDB.java: The singleton data layer that simulates the database.
+---
 
-InvalidPassportDataException.java: A custom exception for handling data validation errors.
-
-Driver.java: A simple application to simulate the functionality of the PassportOffice.
-
-PassportTest.java: A comprehensive JUnit 5 test suite to ensure the system is working correctly.
+## 🧭 Project Structure

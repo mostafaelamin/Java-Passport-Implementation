@@ -1,6 +1,6 @@
 # Passport Implementation System
 
-A robust, modern **Java application** for managing the lifecycle of digital passports — built with a focus on **data integrity**, **clean architecture**, and **comprehensive testing**.
+A robust, modern Java application for managing the lifecycle of digital passports — built with a focus on data integrity, clean architecture, and comprehensive testing.
 
 ---
 
@@ -12,7 +12,7 @@ This project was inspired by that frustration. It answers a simple question:
 
 What if we could build a digital system so reliable and intelligent that passport issues are caught before they ever cause real-world problems?
 
-The **Passport Management System** is designed to ensure that every passport record is valid, secure, and correctly managed.
+The Passport Management System is designed to ensure that every passport record is valid, secure, and correctly managed.
 
 ---
 

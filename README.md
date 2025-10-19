@@ -1,10 +1,10 @@
-# 🛂 Passport Implementation System
+# Passport Implementation System
 
 A robust, modern **Java application** for managing the lifecycle of digital passports — built with a focus on **data integrity**, **clean architecture**, and **comprehensive testing**.
 
 ---
 
-## ✈️ The Inspiration: A Traveler’s Nightmare
+## The Inspiration: A Traveler’s Nightmare
 
 I have had a trip ruined by digital passport issues. Travel should be about exploring, not anxiety and verification issues. 
 
@@ -16,7 +16,7 @@ The **Passport Management System** is designed to ensure that every passport rec
 
 ---
 
-## ⚙️ Core Features
+## Core Features
 
 This project goes beyond simple data storage. It models a professional-grade backend system that demonstrates **modern software engineering principles**.
 
